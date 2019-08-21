@@ -1,0 +1,7 @@
+/* pages/buy/buy.wxss */
+@import '/assests/fonts/iconfont.wxss';
+
+.header{
+  display: flex;
+  align-items: center;
+} 

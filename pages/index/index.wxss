@@ -1,44 +1,44 @@
 /* pages/index/index.wxss */
 @import "/assests/fonts/iconfont.wxss";
-swiper,swiper image{
+
+swiper, swiper image {
   height: 100vm;
   width: 740rpx;
 }
 
-.container{
+.container {
   padding: 30rpx;
 }
 
-.container .list{
-  height: 600rpx;
-}
-
-.container .list .item{
+.container .list .item {
   display: flex;
   justify-content: space-between;
   align-content: space-between;
   align-items: center;
   border-bottom: 1px solid #eee;
-  padding:20rpx;
+  padding: 20rpx;
 }
 
-.container .list .item .title{
+.container .list .item .title {
   font-size: 30rpx;
   font-weight: bold;
-
 }
 
-.container .list .item .entitle{
+.container .list .item .entitle {
   font-size: 26rpx;
-  color:#ccc;
+  color: #ccc;
   margin-top: 10rpx;
 }
 
-.iconfont{
-  border: 1px solid brown;
+.iconfont {
+  border: 1px solid rgba(112, 88, 88, 0.877);
   font-size: 30rpx;
   border-radius: 50%;
   color: brown;
   padding: 10px;
 }
 
+.adv {
+  height: 100rpx;
+  width: 100%;
+}

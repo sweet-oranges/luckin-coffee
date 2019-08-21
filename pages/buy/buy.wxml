@@ -1,0 +1,14 @@
+<!--pages/buy/buy.wxml-->
+<view bindtap="changelocation" class="header">
+  <view class="iconfont icon-iconfontlocation"></view>
+  <view>
+    <view> {{myaddress.name}} </view>
+    <view>{{myaddress.distance}}m</view>
+  </view>
+</view>
+
+<!-- <view style="margin-top:100rpx">
+  <view wx:for="{{ shopList }}">{{item.address}}
+    <view>距离您：{{item.distance}}</view>
+  </view>
+</view> --> 

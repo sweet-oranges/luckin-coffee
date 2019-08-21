@@ -5,13 +5,13 @@
 </swiper>
 <view class='container'>
   <view class='list'>
-    <view class='item'>
+    <navigator open-type="switchTab" url="../buy/buy" class='item'>
     <view class='left'>
       <view class='title'>现在下单</view>
       <view class='entitle'>ORDER NOW</view>
     </view>
     <view class='iconfont icon-Coffee'></view>
-    </view>
+    </navigator>
     <view class='item'>
     <view class='left'>
       <view class='title'>咖啡钱包</view>
@@ -27,4 +27,5 @@
     <view class='iconfont icon-gift'></view>
     </view>
   </view>
+  <image class="adv" src="http://p1.music.126.net/y1urfnWiagEsQgW2NuBSEA==/109951164309567593.jpg"></image>
 </view>
