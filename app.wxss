@@ -8,3 +8,42 @@
   padding: 200rpx 0;
   box-sizing: border-box;
 }  */
+.flex{
+  display: flex;
+}
+
+.a-center{
+  align-items:center;
+}
+
+.padding10{
+  padding:10rpx;
+}
+
+.padding20-j{
+  padding:0 20rpx;
+}
+
+.padding20-a{
+  padding:18rpx 0;
+}
+
+.border-radius{
+  border-radius:15rpx;
+}
+
+.absoulte{
+  position: absolute;
+}
+
+.relative{
+  position: relative;
+}
+
+.fixed{
+  position: fixed;
+}
+
+.lcblue{
+  color: #78aaca;
+}

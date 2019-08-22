@@ -5,13 +5,30 @@ Page({
    * 页面的初始数据
    */
   data: {
+    selectionTopArr:[],
+    containerTop:0,
     shopsList: [],
+    isziti:true,
+    menulist:[],
+    goodslist:[], 
+    activeType:-1,
     myaddress:{
       name:"南京金融科技大厦",
       distance:0
     }
   },
+  changeType(e){
+    console.log(e.currentTarget.dataset.type);
+    this.setData({
+      activeType:e.currentTarget.dataset.type
+    })
+  },
 
+  changetype(){
+    this.setData({
+      isziti : !this.data.isziti
+    })
+  },
   changelocation() {
     wx.chooseLocation({
       success: res => {
@@ -27,10 +44,42 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
+  scroll(e){
+
+  },
+
   onLoad: function(options) {
+    wx.request({
+      url: 'https://www.easy-mock.com/mock/5d5e326b2655df5d6e899f2e/example/menulist',
+      success:res=>{
+        this.setData({
+          menulist:res.data.menulist,
+          activeType: res.data.menulist[0].id
+        })
+      }
+    })
 
+    wx.request({
+      url: 'https://www.easy-mock.com/mock/5d5e326b2655df5d6e899f2e/example/goodslist',
+      success:res=>{
+        console.log(res);
+        this.setData({
+          goodslist:res.data.goodslist,
+        })
+
+        let q = wx.createSelectorQuery()
+        q.selectAll(".selection").boundingClientRect(res=>{
+          console.log(res.map(r=>r.top))
+        })
+        q.select(".container").boundingClientRect(res => {
+          console.log(res.top)
+        })
+        q.exec()
+      }
+    })
+
+  
     var shop = ""
-
     wx.getLocation({
       type: "gcj02",
       success: res => {

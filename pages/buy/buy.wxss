@@ -1,7 +1,82 @@
 /* pages/buy/buy.wxss */
 @import '/assests/fonts/iconfont.wxss';
 
-.header{
+.header {
+  display: flex;
+  padding: 20rpx;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.address {
   display: flex;
   align-items: center;
-} 
+}
+
+.switch {
+  overflow: hidden;
+  border: 1px solid #78aaca;
+  border-radius: 45rpx;
+  display: flex;
+  font-size: 26rpx;
+  padding: 5rpx;
+  width: 220rpx;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.switch view {
+  flex: 1;
+  text-align: center;
+  color: #78aaca;
+}
+
+.switch view.active {
+  background: #7ba9cd;
+  color: #fff;
+  min-width: 110rpx;
+  height: 70rpx;
+  border-radius: 35rpx;
+  line-height: 70rpx;
+}
+
+.container {
+  display: flex;
+  font-size:28rpx;
+  height: calc(100vh- 780px);
+}
+
+.container .left {
+  width: 220rpx;
+  background: #f6f6f6;
+}
+
+.container .left .item {
+  padding: 35rpx 30rpx;
+  border-left: solid 10rpx transparent;
+  text-align: center;
+  position: relative;
+  color:gray
+}
+
+.container .left view.tip{
+  font-size:20rpx;
+  position: absolute;
+  right: 0px;
+  background: orangered;
+  color: #fff;
+  top: 0px;
+  height: auto;
+  padding: 2rpx 5rpx;
+}
+
+.container .left view.active {
+ border-left: solid 10rpx #7ba9cd;
+  background: #fff;
+  color: #7ba9cd;
+
+}
+.container .right {
+  padding-left: 20rpx; 
+  flex: 1;
+}

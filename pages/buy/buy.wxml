@@ -1,14 +1,51 @@
 <!--pages/buy/buy.wxml-->
-<view bindtap="changelocation" class="header">
-  <view class="iconfont icon-iconfontlocation"></view>
-  <view>
-    <view> {{myaddress.name}} </view>
-    <view>{{myaddress.distance}}m</view>
+<view class="header">
+  <view class="address">
+    <view class="iconfont icon-iconfontlocation"></view>
+    <view style="margin-left:20rpx">
+      <view> {{myaddress.name}} </view>
+      <view style="color:#999;font-size:28rpx">{{myaddress.distance}}m</view>
+    </view>
+  </view>
+  <view class="switch" bindtap="changetype">
+    <view class="{{isziti?'active':''}}">自提</view>
+    <view class="{{!isziti?'active':''}}">外卖</view>
   </view>
 </view>
-
+<image mode="center" style="display:block;height:300rpx;width:100vw" src="https://i01piccdn.sogoucdn.com/3702d3e76638a7e0"></image>
 <!-- <view style="margin-top:100rpx">
   <view wx:for="{{ shopList }}">{{item.address}}
     <view>距离您：{{item.distance}}</view>
   </view>
-</view> --> 
+</view> -->
+
+<view class="container">
+  <scroll-view class="left" scroll-y="true">
+    <view data-type="{{item.id}}" bindtap="changeType" class="item {{activeType===item.id?'active':''}}" wx:for="{{menulist}}">
+      {{item.name}}
+      <view wx:if="{{item.tip}}" class="tip">{{item.tip}}</view>
+    </view>
+  </scroll-view>
+  <scroll-view class="right" bindscroll="scroll" scroll-with-animation="true" scroll-into-view="_{{activeType}}" scroll-y="true">
+    <view id="_{{item.id}}" class="selection" wx:for="{{3}}">
+      <view class="flex a-center padding20-a " style="padding-bottom:0">
+        <view>人气TOP</view>
+        <view style="height:1px;background:#ccc;flex:1"></view>
+      </view>
+      <view class="content">
+        <view class="item flex relative padding20-a" wx:for="{{goodslist}}">
+          <view class="item-left">
+            <image class="border-radius" style="width:140rpx;height:140rpx" src="{{item.src}}"></image>
+          </view>
+          <view class="item-right padding20-j">
+            <view style="font-weight:bold;">{{item.name}}</view>
+            <view style="font-size:22rpx;color:#ccc;margin:10rpx 0 20rpx 0">{{item.english_name}}</view>
+            <view style="font-weight:bold;">￥{{item.price}}</view>
+          </view>
+          <view class="iconfont icon-add absoulte lcblue" style="right:10rpx;bottom:30rpx;font-size:52rpx;">
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>
