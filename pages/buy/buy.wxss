@@ -42,7 +42,7 @@
 
 .container {
   display: flex;
-  font-size:28rpx;
+  font-size: 28rpx;
   height: calc(100vh- 780px);
 }
 
@@ -56,11 +56,11 @@
   border-left: solid 10rpx transparent;
   text-align: center;
   position: relative;
-  color:gray
+  color: gray;
 }
 
-.container .left view.tip{
-  font-size:20rpx;
+.container .left view.tip {
+  font-size: 20rpx;
   position: absolute;
   right: 0px;
   background: orangered;
@@ -71,12 +71,113 @@
 }
 
 .container .left view.active {
- border-left: solid 10rpx #7ba9cd;
+  border-left: solid 10rpx #7ba9cd;
   background: #fff;
   color: #7ba9cd;
+}
+
+.container .right {
+  padding-left: 20rpx;
+  flex: 1;
+}
+
+.modal {
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  width: 80%;
+  height: 80%;
+  position: relative;
+  background: #fff;
+  border-radius: 20rpx;
+  overflow: hidden;
+}
+
+.close-icon {
+  position: absolute;
+  right: 10rpx;
+  top: 10rpx;
+}
+
+.img {
+  height: 300rpx;
+  width: 100%;
+}
+
+.modal-content .title {
+  position: absolute;
+  top: 200rpx;
+  left: 40rpx;
+  font-size: 40rpx;
+  color: #fff;
+}
+
+.P2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx;
+}
+
+.counter {
+  align-items: center;
+  display: flex;
+}
+
+.counter view {
+  width: 50rpx;
+  height: 50rpx;
+  text-align: center;
+  color: #78aaca;
+  font-size: bold;
+}
+
+.counter .btn {
+  border-radius: 50%;
+  border:1px solid #78aaca;
+}
+
+.counter .jian {
+  border-color:  #78aaca;
+}
+
+.counter .jia {
+  background: #78aaca;
+  color: #fff;
+}
+
+.j-between{
+  justify-content: space-between;
 
 }
-.container .right {
-  padding-left: 20rpx; 
-  flex: 1;
+
+.btns{
+  padding:10rpx 20rpx;
+}
+
+.btns view{
+  min-width: 45%;
+  font-size: 30rpx;
+  padding:15rpx 0;
+  background: #78aaca;
+  text-align: center;
+  color:#fff;
+  border-radius:10rpx; 
+
+}
+
+.btns .btnborder{
+  border: 1px solid burlywood;
+  background: #fff;
+  color: burlywood;
 }

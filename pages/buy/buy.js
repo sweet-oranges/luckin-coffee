@@ -5,28 +5,73 @@ Page({
    * 页面的初始数据
    */
   data: {
-    selectionTopArr:[],
-    containerTop:0,
+    count:1,
+    guigelist: [{ id: 1, name: "中杯" }, { id: 2, name: "大杯" }, { id: 3, name: "超大杯"}],
+    wendulist: [{ id: 1, name: "常温" }, { id: 2, name: "加热" }, { id: 3, name: "加冰" }],
+    tangdulist: [{ id: 1, name: "全糖" }, { id: 2, name: "少糖" }, { id: 3, name: "无糖" }],
+    ishiddenmodal:true,
+    selectionTopArr: [],
+    containerTop: 0,
     shopsList: [],
-    isziti:true,
-    menulist:[],
-    goodslist:[], 
-    activeType:-1,
-    myaddress:{
-      name:"南京金融科技大厦",
-      distance:0
+    isziti: true,
+    menulist: [],
+    goodslist: [],
+    activeType: -1,
+    myaddress: {
+      name: "南京金融科技大厦",
+      distance: 0
     }
   },
-  changeType(e){
+  addcart(){
+    this.setData({
+      ishiddenmodal : true
+    })
+    wx.showToast({
+      title: '已加入购物车',
+      type:"success"
+    })
+  },
+  jian(){
+    if(--this.data.count < 1) this.data.count=1
+    this.setData({
+      count: this.data.count,
+     
+    })
+  },
+  jia(){
+    this.setData({
+      count: ++this.data.count
+    })
+  },
+  chooseguige(e){
+    console.log(e.detail)
+  },
+  choosewendu(e) {
+    console.log(e.detail)
+  },
+  choosetangdu(e) {
+    console.log(e.detail)
+  },
+  closemodal(){
+    this.setData({
+      ishiddenmodal: true,
+    })
+  },
+  showmodal(){
+    this.setData({
+      ishiddenmodal:false,
+    })
+  },
+  changeType(e) {
     console.log(e.currentTarget.dataset.type);
     this.setData({
-      activeType:e.currentTarget.dataset.type
+      activeType: e.currentTarget.dataset.type
     })
   },
 
-  changetype(){
+  changetype() {
     this.setData({
-      isziti : !this.data.isziti
+      isziti: !this.data.isziti
     })
   },
   changelocation() {
@@ -44,16 +89,16 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  scroll(e){
+  scroll(e) {
 
   },
 
   onLoad: function(options) {
     wx.request({
       url: 'https://www.easy-mock.com/mock/5d5e326b2655df5d6e899f2e/example/menulist',
-      success:res=>{
+      success: res => {
         this.setData({
-          menulist:res.data.menulist,
+          menulist: res.data.menulist,
           activeType: res.data.menulist[0].id
         })
       }
@@ -61,24 +106,24 @@ Page({
 
     wx.request({
       url: 'https://www.easy-mock.com/mock/5d5e326b2655df5d6e899f2e/example/goodslist',
-      success:res=>{
+      success: res => {
         console.log(res);
         this.setData({
-          goodslist:res.data.goodslist,
+          goodslist: res.data.goodslist,
         })
 
         let q = wx.createSelectorQuery()
-        q.selectAll(".selection").boundingClientRect(res=>{
-          console.log(res.map(r=>r.top))
+        q.selectAll(".selection").boundingClientRect(res => {
+          this.data.selectionTopArr = res.map(r => r.top)
         })
         q.select(".container").boundingClientRect(res => {
-          console.log(res.top)
+          this.data.containerTop = res.top
         })
         q.exec()
       }
     })
 
-  
+
     var shop = ""
     wx.getLocation({
       type: "gcj02",
@@ -102,7 +147,7 @@ Page({
               success: res2 => {
                 this.data.myaddress.distance = res2.data.result.elements[0].distance
                 this.setData({
-                  myaddress:this.data.myaddress
+                  myaddress: this.data.myaddress
                 })
               }
             })
@@ -274,5 +319,24 @@ Page({
    */
   onShareAppMessage: function() {
 
+  },
+
+  scroll(e) {
+    var arr = this.data.selectionTopArr.map(r => r - this.data.containerTop)
+    var t = this.data.menulist[0].id
+
+    for (let i = arr.length - 1; i >= 0; i--) {
+      if (arr[i] <= e.detail.scrollTop) {
+        t = this.data.menulist[i].id
+        break
+      }
+    }
+
+    if (t !== this.data.activeType) {
+      this.setData({
+        activeType: t
+      })
+    }
   }
+
 })

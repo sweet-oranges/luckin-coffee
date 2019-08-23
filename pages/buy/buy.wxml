@@ -12,7 +12,7 @@
     <view class="{{!isziti?'active':''}}">外卖</view>
   </view>
 </view>
-<image mode="center" style="display:block;height:300rpx;width:100vw" src="https://i01piccdn.sogoucdn.com/3702d3e76638a7e0"></image>
+<image mode="center" bindtap="showmodal" style="display:block;height:300rpx;width:100vw" src="https://i01piccdn.sogoucdn.com/3702d3e76638a7e0"></image>
 <!-- <view style="margin-top:100rpx">
   <view wx:for="{{ shopList }}">{{item.address}}
     <view>距离您：{{item.distance}}</view>
@@ -48,4 +48,30 @@
       </view>
     </view>
   </scroll-view>
+</view>
+
+<view hidden="{{ishiddenmodal}}" class="modal">
+<view class="modal-content">
+  <icon bindtap="closemodal" type="clear"  size="23" class="close-icon"/>
+  <image class="img" src="https://i0.hdslb.com/bfs/archive/d9f814043374ec9c6178ce3e3836acb5d0528e4e.jpg@880w_440h.webp"></image>
+<view class="title">香草拿铁</view>
+<view>
+  <menu list="{{guigelist}}" bindchoose="chooseguige"></menu>
+  <menu list="{{wendulist}}" bindchoose="choosewendu"></menu>
+  <menu list="{{tangdulist}}" bindchoose="choosetangdu"></menu>
+</view>
+<view class="P2">
+  <view>￥27</view>
+  <view class="counter">
+    <view class="btn jian" bindtap="jian">-</view>
+    <view >{{count}}</view>
+    <view class="btn jia" bindtap="jia">+</view>
+  </view>
+</view>
+<view class="flex j-between btns"> 
+  <view class="btnborder">冲2赠1</view>
+  <view bindtap="addcart">加入购物车</view>
+</view>
+</view>
+
 </view>
